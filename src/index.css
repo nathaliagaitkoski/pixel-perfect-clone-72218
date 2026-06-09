@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Pientro Casa — Design System */
+
+@layer base {
+  :root {
+    /* Brand */
+    --cream: 39 50% 95%;
+    --ink: 25 35% 15%;
+    --terracotta: 16 50% 47%;
+    --terracotta-soft: 16 45% 52%;
+    --gold: 35 45% 60%;
+
+    --background: var(--cream);
+    --foreground: var(--ink);
+
+    --card: var(--cream);
+    --card-foreground: var(--ink);
+
+    --popover: 0 0% 100%;
+    --popover-foreground: var(--ink);
+
+    --primary: var(--ink);
+    --primary-foreground: var(--cream);
+
+    --secondary: 35 30% 90%;
+    --secondary-foreground: var(--ink);
+
+    --muted: 35 25% 92%;
+    --muted-foreground: 25 15% 40%;
+
+    --accent: var(--terracotta);
+    --accent-foreground: var(--cream);
+
+    --destructive: 0 70% 45%;
+    --destructive-foreground: var(--cream);
+
+    --border: 30 25% 85%;
+    --input: 30 25% 85%;
+    --ring: var(--terracotta);
+
+    --radius: 0.125rem;
+
+    --sidebar-background: var(--cream);
+    --sidebar-foreground: var(--ink);
+    --sidebar-primary: var(--ink);
+    --sidebar-primary-foreground: var(--cream);
+    --sidebar-accent: 35 30% 90%;
+    --sidebar-accent-foreground: var(--ink);
+    --sidebar-border: 30 25% 85%;
+    --sidebar-ring: var(--terracotta);
+  }
+
+  .dark {
+    --background: var(--ink);
+    --foreground: var(--cream);
+    --card: var(--ink);
+    --card-foreground: var(--cream);
+    --popover: var(--ink);
+    --popover-foreground: var(--cream);
+    --primary: var(--cream);
+    --primary-foreground: var(--ink);
+    --secondary: 25 25% 22%;
+    --secondary-foreground: var(--cream);
+    --muted: 25 20% 22%;
+    --muted-foreground: 35 15% 70%;
+    --accent: var(--terracotta);
+    --accent-foreground: var(--cream);
+    --border: 25 20% 22%;
+    --input: 25 20% 22%;
+    --ring: var(--terracotta);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Inter", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@layer components {
+  .font-display {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .eyebrow {
+    @apply text-[0.65rem] uppercase tracking-[0.3em] text-terracotta font-medium;
+  }
+}
