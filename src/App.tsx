@@ -5,6 +5,9 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
+import Home from "./pages/Home.tsx";
+import Collection from "./pages/Collection.tsx";
+import Product from "./pages/Product.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.tsx";
 import TermsOfService from "./pages/TermsOfService.tsx";
@@ -22,7 +25,10 @@ const AppShell = () => {
   }, [location.pathname]);
   return (
     <Routes>
-      <Route path="/" element={<Index />} />
+      <Route path="/" element={<Home />} />
+      <Route path="/colecao/:slug" element={<Collection />} />
+      <Route path="/produto/caixa-decorativa-terracota-e-dourado-de-luxo" element={<Index />} />
+      <Route path="/produto/:slug" element={<Product />} />
       <Route path="/politica-de-privacidade" element={<PrivacyPolicy />} />
       <Route path="/termos-de-servico" element={<TermsOfService />} />
       <Route path="/politica-de-reembolso" element={<RefundPolicy />} />
