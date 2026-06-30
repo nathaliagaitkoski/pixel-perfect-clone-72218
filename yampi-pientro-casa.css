@@ -1,0 +1,687 @@
+/* ============================================================
+   PIENTRO CASA — CSS para Yampi (Rocket)
+   Cole em: Personalizar tema → Código adicional → CSS customizado
+   Organizado por seção. Você pode ativar/desativar blocos.
+   ============================================================ */
+
+
+/* ============================================================
+   0. FUNDAÇÃO — Fontes + Tokens de cor
+   ============================================================ */
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap");
+
+:root {
+  /* Cores da marca */
+  --pc-cream:           #F7F1E3;
+  --pc-cream-95:        rgba(247, 241, 227, 0.95);
+  --pc-ink:             #342518;
+  --pc-ink-70:          rgba(52, 37, 24, 0.70);
+  --pc-ink-40:          rgba(52, 37, 24, 0.40);
+  --pc-terracotta:      #B45A38;
+  --pc-terracotta-soft: #C06B47;
+  --pc-gold:            #C9A36B;
+  --pc-secondary:       #EBE3D5;
+  --pc-muted:           #EDE7DB;
+  --pc-muted-fg:        #6E5E51;
+  --pc-border:          #DDD2C2;
+
+  /* Tipografia */
+  --pc-font-display: "Cormorant Garamond", Georgia, serif;
+  --pc-font-sans:    "Inter", system-ui, sans-serif;
+}
+
+/* Reset visual global da loja */
+body, .sc-app, [class*="LayoutWrapper"] {
+  background-color: var(--pc-cream) !important;
+  color: var(--pc-ink) !important;
+  font-family: var(--pc-font-sans) !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, [class*="Title"], [class*="title"] {
+  font-family: var(--pc-font-display) !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.01em !important;
+  color: var(--pc-ink) !important;
+}
+
+
+/* ============================================================
+   1. BARRA SUPERIOR (Marquee / Anúncio)
+   Yampi: "Barra de anúncio" no topo
+   ============================================================ */
+[class*="AnnouncementBar"],
+[class*="announcement-bar"],
+.sc-announcement-bar {
+  background-color: var(--pc-ink) !important;
+  color: var(--pc-cream) !important;
+  font-family: var(--pc-font-sans) !important;
+  font-size: 0.65rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.3em !important;
+  padding: 10px 0 !important;
+  border: none !important;
+}
+
+[class*="AnnouncementBar"] a,
+[class*="AnnouncementBar"] span {
+  color: var(--pc-cream) !important;
+}
+
+
+/* ============================================================
+   2. HEADER (Cabeçalho / Menu)
+   ============================================================ */
+header,
+[class*="Header"],
+.sc-header {
+  background-color: var(--pc-cream-95) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--pc-border) !important;
+  box-shadow: none !important;
+  position: sticky !important;
+  top: 0;
+  z-index: 30;
+}
+
+/* Logo — limitar altura */
+header img[alt*="logo" i],
+[class*="Header"] img[class*="logo" i],
+[class*="HeaderLogo"] img {
+  max-height: 32px !important;
+  width: auto !important;
+}
+
+/* Menu de navegação */
+header nav a,
+[class*="Menu"] a,
+[class*="Navigation"] a {
+  font-family: var(--pc-font-sans) !important;
+  font-size: 0.7rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.28em !important;
+  color: var(--pc-ink-70) !important;
+  font-weight: 400 !important;
+  transition: color 0.2s ease;
+}
+header nav a:hover,
+[class*="Menu"] a:hover {
+  color: var(--pc-terracotta) !important;
+}
+
+/* Ícones do header (conta, carrinho, busca) */
+header [class*="Icon"] svg,
+header button svg {
+  color: var(--pc-ink) !important;
+  stroke: var(--pc-ink) !important;
+}
+
+
+/* ============================================================
+   3. HERO / BANNER PRINCIPAL
+   Yampi: seção "Banner" da home
+   ============================================================ */
+[class*="Banner"],
+[class*="HeroBanner"],
+.sc-banner {
+  background-color: var(--pc-ink) !important;
+  position: relative;
+}
+
+/* Overlay escuro sobre a imagem do banner */
+[class*="Banner"] [class*="Image"]::after,
+[class*="HeroBanner"]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(52, 37, 24, 0.30) 0%,
+    rgba(52, 37, 24, 0.10) 50%,
+    rgba(52, 37, 24, 0.70) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Texto/título sobre o banner */
+[class*="Banner"] h1,
+[class*="Banner"] h2,
+[class*="HeroBanner"] h1 {
+  font-family: var(--pc-font-display) !important;
+  color: var(--pc-cream) !important;
+  font-size: clamp(1.5rem, 4vw, 2.5rem) !important;
+  line-height: 1.1 !important;
+  font-weight: 500 !important;
+  position: relative;
+  z-index: 2;
+}
+
+[class*="Banner"] p {
+  color: var(--pc-cream) !important;
+  font-size: 0.5rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.4em !important;
+  position: relative;
+  z-index: 2;
+}
+
+/* CTA do banner — estilo "ver coleção" sublinhado */
+[class*="Banner"] a[class*="Button"],
+[class*="Banner"] .btn {
+  background: transparent !important;
+  color: var(--pc-cream) !important;
+  border: none !important;
+  border-bottom: 1px solid var(--pc-cream) !important;
+  border-radius: 0 !important;
+  padding: 4px 0 !important;
+  font-size: 0.55rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.32em !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  position: relative;
+  z-index: 2;
+}
+
+
+/* ============================================================
+   4. SEÇÃO DE COLEÇÃO / VITRINE DE PRODUTOS
+   ============================================================ */
+[class*="Showcase"],
+[class*="ProductShowcase"],
+[class*="ShelfSection"],
+.sc-product-shelf {
+  background-color: var(--pc-cream) !important;
+  padding: 64px 20px !important;
+}
+
+@media (min-width: 768px) {
+  [class*="Showcase"],
+  [class*="ProductShowcase"] {
+    padding: 96px 32px !important;
+  }
+}
+
+/* Título da seção */
+[class*="Showcase"] [class*="Title"],
+[class*="ShelfSection"] h2 {
+  font-family: var(--pc-font-display) !important;
+  font-size: clamp(1.875rem, 4vw, 3rem) !important;
+  text-align: center !important;
+  margin-bottom: 48px !important;
+  color: var(--pc-ink) !important;
+}
+
+/* "Eyebrow" antes do título (subtítulo pequeno) */
+[class*="Showcase"] [class*="Subtitle"],
+[class*="ShelfSection"] [class*="subtitle"] {
+  font-family: var(--pc-font-sans) !important;
+  font-size: 0.65rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.3em !important;
+  color: var(--pc-terracotta) !important;
+  text-align: center !important;
+  margin-bottom: 16px !important;
+}
+
+
+/* ============================================================
+   5. CARD DE PRODUTO (vitrine)
+   ============================================================ */
+[class*="ProductCard"],
+[class*="product-card"],
+.sc-product-card {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  overflow: visible !important;
+}
+
+/* Imagem do produto */
+[class*="ProductCard"] [class*="Image"],
+[class*="ProductCard"] img {
+  background-color: var(--pc-secondary) !important;
+  border-radius: 0 !important;
+  aspect-ratio: 4 / 5 !important;
+  object-fit: cover !important;
+  transition: transform 0.7s ease !important;
+}
+
+[class*="ProductCard"]:hover img {
+  transform: scale(1.04) !important;
+}
+
+/* Nome do produto */
+[class*="ProductCard"] [class*="Name"],
+[class*="ProductCard"] [class*="Title"],
+[class*="ProductCard"] h3 {
+  font-family: var(--pc-font-display) !important;
+  font-size: 1.25rem !important;
+  font-weight: 500 !important;
+  color: var(--pc-ink) !important;
+  line-height: 1.2 !important;
+  margin: 12px 0 6px !important;
+  text-transform: none !important;
+  letter-spacing: -0.01em !important;
+}
+
+[class*="ProductCard"]:hover [class*="Name"] {
+  color: var(--pc-terracotta) !important;
+}
+
+/* Preço */
+[class*="ProductCard"] [class*="Price"],
+[class*="ProductCard"] [class*="price"] {
+  font-family: var(--pc-font-sans) !important;
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  color: var(--pc-ink) !important;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Preço "de" (riscado) */
+[class*="ProductCard"] [class*="OldPrice"],
+[class*="ProductCard"] del,
+[class*="ProductCard"] s {
+  color: var(--pc-ink-40) !important;
+  text-decoration: line-through !important;
+  font-size: 0.75rem !important;
+}
+
+/* Badge "OFF" do card */
+[class*="ProductCard"] [class*="Badge"],
+[class*="ProductCard"] [class*="Discount"] {
+  background-color: var(--pc-terracotta) !important;
+  color: var(--pc-cream) !important;
+  border-radius: 0 !important;
+  font-size: 0.6rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.2em !important;
+  padding: 4px 8px !important;
+}
+
+
+/* ============================================================
+   6. SEÇÃO "SOBRE A MARCA" / CONTEÚDO EDITORIAL
+   Yampi: bloco "Imagem + texto" ou "Banner + texto"
+   ============================================================ */
+[class*="ImageText"],
+[class*="ContentSection"],
+.sc-image-text {
+  background-color: var(--pc-secondary) !important;
+  padding: 64px 20px !important;
+}
+
+@media (min-width: 768px) {
+  [class*="ImageText"] { padding: 96px 32px !important; }
+}
+
+[class*="ImageText"] h2,
+[class*="ContentSection"] h2 {
+  font-family: var(--pc-font-display) !important;
+  font-size: clamp(1.875rem, 3.5vw, 2.5rem) !important;
+  font-weight: 500 !important;
+  color: var(--pc-ink) !important;
+  line-height: 1.1 !important;
+}
+
+[class*="ImageText"] p,
+[class*="ContentSection"] p {
+  font-family: var(--pc-font-sans) !important;
+  font-size: 0.95rem !important;
+  line-height: 1.7 !important;
+  color: var(--pc-ink-70) !important;
+}
+
+[class*="ImageText"] img {
+  aspect-ratio: 4 / 5 !important;
+  object-fit: cover !important;
+  border-radius: 0 !important;
+}
+
+
+/* ============================================================
+   7. BOTÕES (global — CTA primário e secundário)
+   ============================================================ */
+button,
+.btn,
+[class*="Button"],
+input[type="submit"] {
+  font-family: var(--pc-font-sans) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.28em !important;
+  font-size: 0.7rem !important;
+  font-weight: 500 !important;
+  border-radius: 0 !important;
+  padding: 14px 28px !important;
+  transition: all 0.25s ease !important;
+}
+
+/* CTA primário (comprar / adicionar ao carrinho) */
+[class*="ButtonPrimary"],
+[class*="AddToCart"],
+[class*="BuyButton"],
+button[type="submit"] {
+  background-color: var(--pc-ink) !important;
+  color: var(--pc-cream) !important;
+  border: none !important;
+}
+
+[class*="ButtonPrimary"]:hover,
+[class*="AddToCart"]:hover,
+[class*="BuyButton"]:hover {
+  background-color: var(--pc-terracotta) !important;
+  color: var(--pc-cream) !important;
+}
+
+/* Botão secundário (outline) */
+[class*="ButtonSecondary"],
+[class*="ButtonOutline"] {
+  background: transparent !important;
+  color: var(--pc-ink) !important;
+  border: 1px solid var(--pc-ink-40) !important;
+}
+
+[class*="ButtonSecondary"]:hover {
+  border-color: var(--pc-ink) !important;
+  background-color: var(--pc-ink) !important;
+  color: var(--pc-cream) !important;
+}
+
+
+/* ============================================================
+   8. PÁGINA DE PRODUTO
+   ============================================================ */
+[class*="ProductPage"],
+[class*="ProductDetail"] {
+  background-color: var(--pc-cream) !important;
+  padding-top: 32px !important;
+}
+
+/* Título do produto */
+[class*="ProductPage"] h1,
+[class*="ProductDetail"] h1 {
+  font-family: var(--pc-font-display) !important;
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem) !important;
+  font-weight: 500 !important;
+  color: var(--pc-ink) !important;
+  line-height: 1.15 !important;
+  margin-bottom: 12px !important;
+}
+
+/* Preço principal */
+[class*="ProductPage"] [class*="Price"]:not([class*="Old"]) {
+  font-family: var(--pc-font-sans) !important;
+  font-size: 1.5rem !important;
+  font-weight: 500 !important;
+  color: var(--pc-ink) !important;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Descrição */
+[class*="ProductPage"] [class*="Description"],
+[class*="ProductDetail"] [class*="Description"] {
+  font-family: var(--pc-font-sans) !important;
+  font-size: 0.95rem !important;
+  line-height: 1.75 !important;
+  color: var(--pc-ink-70) !important;
+}
+
+/* Galeria de imagens */
+[class*="ProductGallery"] img,
+[class*="ProductImages"] img {
+  border-radius: 0 !important;
+  background-color: var(--pc-secondary) !important;
+}
+
+/* Seletor de variantes (tamanho, cor) */
+[class*="VariantSelector"] button,
+[class*="Variant"] button {
+  border: 1px solid var(--pc-border) !important;
+  background: transparent !important;
+  color: var(--pc-ink) !important;
+  border-radius: 0 !important;
+  padding: 10px 16px !important;
+  font-size: 0.7rem !important;
+  letter-spacing: 0.2em !important;
+}
+
+[class*="VariantSelector"] button[class*="active"],
+[class*="VariantSelector"] button[class*="selected"] {
+  border-color: var(--pc-ink) !important;
+  background-color: var(--pc-ink) !important;
+  color: var(--pc-cream) !important;
+}
+
+/* Calculadora de frete */
+[class*="ShippingCalculator"] {
+  border: 1px solid var(--pc-border) !important;
+  background: var(--pc-muted) !important;
+  border-radius: 0 !important;
+  padding: 16px !important;
+}
+
+
+/* ============================================================
+   9. INPUTS / FORMULÁRIOS
+   ============================================================ */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"],
+input[type="search"],
+textarea,
+select {
+  background: transparent !important;
+  border: 1px solid var(--pc-border) !important;
+  border-radius: 0 !important;
+  font-family: var(--pc-font-sans) !important;
+  font-size: 0.9rem !important;
+  color: var(--pc-ink) !important;
+  padding: 12px 14px !important;
+  transition: border-color 0.2s ease !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none !important;
+  border-color: var(--pc-terracotta) !important;
+  box-shadow: none !important;
+}
+
+::placeholder {
+  color: var(--pc-ink-40) !important;
+}
+
+
+/* ============================================================
+   10. CARRINHO LATERAL (Drawer)
+   ============================================================ */
+[class*="CartDrawer"],
+[class*="MiniCart"],
+.sc-cart-drawer {
+  background-color: var(--pc-cream) !important;
+  border-left: 1px solid var(--pc-border) !important;
+}
+
+[class*="CartDrawer"] h2,
+[class*="MiniCart"] h2 {
+  font-family: var(--pc-font-display) !important;
+  color: var(--pc-ink) !important;
+  font-size: 1.5rem !important;
+}
+
+[class*="CartItem"] {
+  border-bottom: 1px solid var(--pc-border) !important;
+  padding: 16px 0 !important;
+}
+
+[class*="CartItem"] [class*="Name"] {
+  font-family: var(--pc-font-display) !important;
+  font-size: 1rem !important;
+  color: var(--pc-ink) !important;
+}
+
+
+/* ============================================================
+   11. NEWSLETTER / LEAD BANNER
+   ============================================================ */
+[class*="Newsletter"],
+[class*="LeadCapture"] {
+  background-color: var(--pc-ink) !important;
+  color: var(--pc-cream) !important;
+  padding: 48px 20px !important;
+  text-align: center !important;
+}
+
+[class*="Newsletter"] h2,
+[class*="Newsletter"] h3 {
+  font-family: var(--pc-font-display) !important;
+  color: var(--pc-cream) !important;
+  font-size: clamp(1.5rem, 3vw, 2rem) !important;
+}
+
+[class*="Newsletter"] p {
+  color: var(--pc-cream) !important;
+  opacity: 0.8;
+  font-size: 0.9rem !important;
+}
+
+[class*="Newsletter"] input {
+  background: transparent !important;
+  border: 1px solid rgba(247, 241, 227, 0.3) !important;
+  color: var(--pc-cream) !important;
+}
+
+[class*="Newsletter"] input::placeholder {
+  color: rgba(247, 241, 227, 0.5) !important;
+}
+
+[class*="Newsletter"] button {
+  background-color: var(--pc-terracotta) !important;
+  color: var(--pc-cream) !important;
+  border: none !important;
+}
+
+
+/* ============================================================
+   12. FOOTER (Rodapé)
+   ============================================================ */
+footer,
+[class*="Footer"],
+.sc-footer {
+  background-color: var(--pc-cream) !important;
+  color: var(--pc-ink) !important;
+  border-top: 1px solid var(--pc-border) !important;
+  padding: 56px 20px 32px !important;
+}
+
+footer h3,
+footer h4,
+[class*="Footer"] [class*="Title"] {
+  font-family: var(--pc-font-sans) !important;
+  font-size: 0.7rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.3em !important;
+  color: var(--pc-ink-70) !important;
+  font-weight: 500 !important;
+  margin-bottom: 16px !important;
+}
+
+footer a,
+[class*="Footer"] a {
+  color: var(--pc-ink-70) !important;
+  font-size: 0.875rem !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease !important;
+}
+
+footer a:hover {
+  color: var(--pc-terracotta) !important;
+}
+
+/* Ícones sociais do footer */
+footer [class*="Social"] a,
+[class*="SocialIcon"] {
+  width: 32px !important;
+  height: 32px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border: 1px solid var(--pc-border) !important;
+  border-radius: 0 !important;
+  transition: all 0.2s ease !important;
+}
+
+footer [class*="Social"] a:hover {
+  border-color: var(--pc-terracotta) !important;
+  color: var(--pc-terracotta) !important;
+}
+
+/* Selo de pagamento e segurança */
+footer [class*="Payment"] img,
+footer [class*="Security"] img {
+  filter: grayscale(100%) opacity(0.7);
+  max-height: 24px !important;
+}
+
+/* Linha de copyright */
+footer [class*="Copyright"],
+[class*="Footer"] [class*="copyright"] {
+  font-size: 0.65rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.25em !important;
+  color: var(--pc-muted-fg) !important;
+  border-top: 1px solid var(--pc-border) !important;
+  padding-top: 20px !important;
+  margin-top: 32px !important;
+}
+
+
+/* ============================================================
+   13. CHECKOUT (limitado — Yampi controla muito disso)
+   ============================================================ */
+[class*="Checkout"] {
+  background-color: var(--pc-cream) !important;
+  font-family: var(--pc-font-sans) !important;
+}
+
+[class*="Checkout"] h1,
+[class*="Checkout"] h2 {
+  font-family: var(--pc-font-display) !important;
+  color: var(--pc-ink) !important;
+}
+
+
+/* ============================================================
+   14. WHATSAPP FLUTUANTE (se usar app/widget)
+   ============================================================ */
+[class*="WhatsApp"],
+[class*="whatsapp-float"],
+.wa-float {
+  background-color: var(--pc-terracotta) !important;
+  color: var(--pc-cream) !important;
+  border-radius: 9999px !important;
+  box-shadow: 0 8px 24px -8px rgba(180, 90, 56, 0.5) !important;
+}
+
+
+/* ============================================================
+   15. SCROLLBAR (toque editorial)
+   ============================================================ */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--pc-cream); }
+::-webkit-scrollbar-thumb { background: var(--pc-border); border-radius: 0; }
+::-webkit-scrollbar-thumb:hover { background: var(--pc-ink-40); }
+
+
+/* ============================================================
+   FIM — Pientro Casa
+   Dica: abra o site → F12 → inspecione um elemento → me mande
+   a classe real para eu apertar o seletor onde precisar.
+   ============================================================ */
