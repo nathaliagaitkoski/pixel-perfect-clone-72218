@@ -1,0 +1,98 @@
+{
+  "version": 1,
+  "sdk_version": "0.20.0",
+  "path": "/functions/v1/mcp",
+  "auth": {
+    "type": "none"
+  },
+  "mcp": {
+    "server": {
+      "name": "pientro-casa-mcp",
+      "version": "0.1.0",
+      "title": "Pientro Casa MCP"
+    },
+    "tools": [
+      {
+        "name": "list_products",
+        "title": "Listar produtos",
+        "description": "Lista os produtos do catálogo da Pientro Casa. Pode filtrar por categoria (caixa, vaso, quadro, objeto) e por coleção.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "category": {
+              "description": "Filtra por categoria do produto.",
+              "type": "string",
+              "enum": [
+                "caixa",
+                "vaso",
+                "quadro",
+                "objeto"
+              ]
+            },
+            "collection": {
+              "description": "Slug da coleção, por exemplo 'sol-da-manha'.",
+              "type": "string"
+            }
+          }
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_product",
+        "title": "Detalhes do produto",
+        "description": "Retorna os detalhes completos de um produto da Pientro Casa a partir do seu slug (ex.: 'vaso-alto-sol-da-manha').",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "slug": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Slug do produto."
+            }
+          },
+          "required": [
+            "slug"
+          ]
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_collection",
+        "title": "Listar coleção",
+        "description": "Lista todos os produtos de uma coleção da Pientro Casa (ex.: 'sol-da-manha').",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "collection": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Slug da coleção."
+            }
+          },
+          "required": [
+            "collection"
+          ]
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
