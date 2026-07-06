@@ -150,6 +150,30 @@ const Quadro = () => {
             >
               Comprar agora
             </button>
+
+            {/* Pagamento & Garantia — desktop only, dentro da coluna direita */}
+            <div className="hidden lg:grid mt-5 grid-cols-2 gap-3">
+              <div className="border border-border p-3.5 flex flex-col">
+                <p className="text-[0.55rem] uppercase tracking-[0.22em] text-ink/55 mb-2">
+                  Formas de pagamento
+                </p>
+                <PaymentBadges />
+                <p className="text-[0.6rem] text-ink/55 mt-2 leading-relaxed">
+                  Pix, boleto e cartões em até 12×.
+                </p>
+              </div>
+              <div className="bg-secondary/60 border border-border p-3.5 flex gap-2 items-start">
+                <RotateCcw className="w-4 h-4 text-terracotta flex-shrink-0 mt-0.5" />
+                <div className="min-w-0">
+                  <p className="font-display text-sm text-ink leading-tight">
+                    Garantia · 7 dias
+                  </p>
+                  <p className="text-[0.65rem] text-ink/65 mt-1 leading-relaxed">
+                    Não amou? Devolva em até 7 dias e devolvemos seu dinheiro.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -184,7 +208,7 @@ const Quadro = () => {
         </div>
 
         {/* Pagamento & Garantia */}
-        <div className="max-w-4xl mx-auto mt-10 grid md:grid-cols-2 gap-4 md:gap-5">
+        <div className="lg:hidden max-w-4xl mx-auto mt-10 grid md:grid-cols-2 gap-4 md:gap-5">
           <div className="border border-border p-5 flex flex-col">
             <p className="text-[0.65rem] uppercase tracking-[0.25em] text-ink/55 mb-3">
               Formas de pagamento
