@@ -1,6 +1,6 @@
 import { defineTool } from "@lovable.dev/mcp-js";
 import { z } from "zod";
-import { getProductsByCollection } from "@/data/products";
+import { getMcpProductsByCollection } from "../data";
 
 export default defineTool({
   name: "list_collection",
@@ -16,7 +16,7 @@ export default defineTool({
     openWorldHint: false,
   },
   handler: ({ collection }) => {
-    const items = getProductsByCollection(collection).map((p) => ({
+    const items = getMcpProductsByCollection(collection).map((p) => ({
       slug: p.slug,
       name: p.name,
       category: p.category,

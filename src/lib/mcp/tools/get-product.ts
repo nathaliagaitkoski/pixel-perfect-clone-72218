@@ -1,6 +1,6 @@
 import { defineTool } from "@lovable.dev/mcp-js";
 import { z } from "zod";
-import { getProductBySlug } from "@/data/products";
+import { getMcpProductBySlug } from "../data";
 
 export default defineTool({
   name: "get_product",
@@ -16,7 +16,7 @@ export default defineTool({
     openWorldHint: false,
   },
   handler: ({ slug }) => {
-    const p = getProductBySlug(slug);
+    const p = getMcpProductBySlug(slug);
     if (!p) {
       return {
         content: [{ type: "text", text: `Produto não encontrado: ${slug}` }],

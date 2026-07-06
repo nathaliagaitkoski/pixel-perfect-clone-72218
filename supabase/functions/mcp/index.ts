@@ -8,7 +8,110 @@ import { defineMcp } from "npm:@lovable.dev/mcp-js@0.20.0";
 // src/lib/mcp/tools/list-products.ts
 import { defineTool } from "npm:@lovable.dev/mcp-js@0.20.0";
 import { z } from "npm:zod@^4.4.3";
-import { PRODUCTS } from "npm:@/data/products";
+
+// src/lib/mcp/data.ts
+var MCP_PRODUCTS = [
+  {
+    slug: "caixa-decorativa-media",
+    name: "Caixa Decorativa M\xE9dia \u2014 Terracota & Dourado",
+    shortName: "Caixa M\xE9dia",
+    category: "caixa",
+    collection: "sol-da-manha",
+    price: 159.2,
+    compareAt: 199,
+    tagline: "Composi\xE7\xE3o em camadas, com peso visual leve",
+    description: "Mais do que organizar, pe\xE7as pensadas para compor ambientes com eleg\xE2ncia e inten\xE7\xE3o.",
+    highlights: [
+      "Tampa de madeira maci\xE7a",
+      "Acabamento em terracota fosco",
+      "Detalhe em folha dourada"
+    ]
+  },
+  {
+    slug: "caixa-decorativa-grande",
+    name: "Caixa Decorativa Grande \u2014 Terracota & Dourado",
+    shortName: "Caixa Grande",
+    category: "caixa",
+    collection: "sol-da-manha",
+    price: 199.2,
+    compareAt: 249,
+    tagline: "Pe\xE7a \xE2ncora para console, mesa lateral ou nicho",
+    description: "Mais do que organizar, pe\xE7as pensadas para compor ambientes com eleg\xE2ncia e inten\xE7\xE3o.",
+    highlights: [
+      "Tampa de madeira maci\xE7a",
+      "Acabamento em terracota fosco",
+      "Detalhe em folha dourada"
+    ]
+  },
+  {
+    slug: "vaso-alto-sol-da-manha",
+    name: "Vaso Alto Sol da Manh\xE3",
+    shortName: "Vaso Alto",
+    category: "vaso",
+    collection: "sol-da-manha",
+    price: 179,
+    compareAt: 219,
+    tagline: "Silhueta esguia, presen\xE7a discreta",
+    description: "Cer\xE2mica artesanal em terracota fosco com detalhe em folha dourada feito \xE0 m\xE3o. Cada pe\xE7a \xE9 \xFAnica.",
+    highlights: [
+      "Cer\xE2mica artesanal \u2014 pe\xE7a \xFAnica",
+      "Folha dourada aplicada \xE0 m\xE3o",
+      "Ideal para galhos secos ou flores cortadas"
+    ]
+  },
+  {
+    slug: "vaso-baixo-sol-da-manha",
+    name: "Vaso Baixo Sol da Manh\xE3",
+    shortName: "Vaso Baixo",
+    category: "vaso",
+    collection: "sol-da-manha",
+    price: 149,
+    compareAt: 189,
+    tagline: "Volume generoso, gesto contempor\xE2neo",
+    description: "Cer\xE2mica artesanal em terracota fosco com fio dourado contornando a borda.",
+    highlights: [
+      "Cer\xE2mica artesanal \u2014 pe\xE7a \xFAnica",
+      "Borda em fio dourado",
+      "Perfeito para pampas e arranjos secos"
+    ]
+  },
+  {
+    slug: "quadro-sol-da-manha",
+    name: "Quadro Sol da Manh\xE3",
+    shortName: "Quadro",
+    category: "quadro",
+    collection: "sol-da-manha",
+    price: 229,
+    compareAt: 289,
+    tagline: "Arte abstrata em terracota e dourado",
+    description: "Impress\xE3o fine art em papel algod\xE3o 310g, com moldura em carvalho natural e passepartout cru.",
+    highlights: [
+      "Impress\xE3o fine art 310g/m\xB2",
+      "Moldura em carvalho natural",
+      "Edi\xE7\xE3o limitada e numerada"
+    ]
+  },
+  {
+    slug: "objeto-decorativo-sol-da-manha",
+    name: "Objeto Decorativo Sol da Manh\xE3",
+    shortName: "Objeto Decorativo",
+    category: "objeto",
+    collection: "sol-da-manha",
+    price: 139,
+    compareAt: 179,
+    tagline: "Forma org\xE2nica, peso na composi\xE7\xE3o",
+    description: "Escultura decorativa em cer\xE2mica terracota com acentos em folha dourada.",
+    highlights: [
+      "Escultura em cer\xE2mica maci\xE7a",
+      "Acentos em folha dourada feitos \xE0 m\xE3o",
+      "Apoio em feltro para proteger superf\xEDcies"
+    ]
+  }
+];
+var getMcpProductBySlug = (slug) => MCP_PRODUCTS.find((p) => p.slug === slug);
+var getMcpProductsByCollection = (collection) => MCP_PRODUCTS.filter((p) => p.collection === collection);
+
+// src/lib/mcp/tools/list-products.ts
 var list_products_default = defineTool({
   name: "list_products",
   title: "Listar produtos",
@@ -23,7 +126,7 @@ var list_products_default = defineTool({
     openWorldHint: false
   },
   handler: ({ category, collection }) => {
-    const items = PRODUCTS.filter(
+    const items = MCP_PRODUCTS.filter(
       (p) => (!category || p.category === category) && (!collection || p.collection === collection)
     ).map((p) => ({
       slug: p.slug,
@@ -36,10 +139,7 @@ var list_products_default = defineTool({
     }));
     return {
       content: [
-        {
-          type: "text",
-          text: `${items.length} produto(s) encontrado(s).`
-        }
+        { type: "text", text: `${items.length} produto(s) encontrado(s).` }
       ],
       structuredContent: { products: items }
     };
@@ -49,7 +149,6 @@ var list_products_default = defineTool({
 // src/lib/mcp/tools/get-product.ts
 import { defineTool as defineTool2 } from "npm:@lovable.dev/mcp-js@0.20.0";
 import { z as z2 } from "npm:zod@^4.4.3";
-import { getProductBySlug } from "npm:@/data/products";
 var get_product_default = defineTool2({
   name: "get_product",
   title: "Detalhes do produto",
@@ -63,7 +162,7 @@ var get_product_default = defineTool2({
     openWorldHint: false
   },
   handler: ({ slug }) => {
-    const p = getProductBySlug(slug);
+    const p = getMcpProductBySlug(slug);
     if (!p) {
       return {
         content: [{ type: "text", text: `Produto n\xE3o encontrado: ${slug}` }],
@@ -99,7 +198,6 @@ var get_product_default = defineTool2({
 // src/lib/mcp/tools/list-collection.ts
 import { defineTool as defineTool3 } from "npm:@lovable.dev/mcp-js@0.20.0";
 import { z as z3 } from "npm:zod@^4.4.3";
-import { getProductsByCollection } from "npm:@/data/products";
 var list_collection_default = defineTool3({
   name: "list_collection",
   title: "Listar cole\xE7\xE3o",
@@ -113,7 +211,7 @@ var list_collection_default = defineTool3({
     openWorldHint: false
   },
   handler: ({ collection }) => {
-    const items = getProductsByCollection(collection).map((p) => ({
+    const items = getMcpProductsByCollection(collection).map((p) => ({
       slug: p.slug,
       name: p.name,
       category: p.category,

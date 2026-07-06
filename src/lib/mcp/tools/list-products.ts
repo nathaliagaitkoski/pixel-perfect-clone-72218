@@ -1,6 +1,6 @@
 import { defineTool } from "@lovable.dev/mcp-js";
 import { z } from "zod";
-import { PRODUCTS } from "@/data/products";
+import { MCP_PRODUCTS } from "../data";
 
 export default defineTool({
   name: "list_products",
@@ -23,7 +23,7 @@ export default defineTool({
     openWorldHint: false,
   },
   handler: ({ category, collection }) => {
-    const items = PRODUCTS.filter(
+    const items = MCP_PRODUCTS.filter(
       (p) =>
         (!category || p.category === category) &&
         (!collection || p.collection === collection),
@@ -39,10 +39,7 @@ export default defineTool({
 
     return {
       content: [
-        {
-          type: "text",
-          text: `${items.length} produto(s) encontrado(s).`,
-        },
+        { type: "text", text: `${items.length} produto(s) encontrado(s).` },
       ],
       structuredContent: { products: items },
     };
