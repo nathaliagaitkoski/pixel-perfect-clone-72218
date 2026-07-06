@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
-import { Check, Minus, Plus, Truck, RotateCcw, Lock, ArrowLeft } from "lucide-react";
+import { ShieldCheck, RotateCcw, Minus, Plus, ChevronDown } from "lucide-react";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 import { formatBRL } from "@/lib/yampi";
@@ -10,6 +10,17 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { ProductCard } from "@/components/ProductCard";
 import { getProductBySlug, getProductsByCollection } from "@/data/products";
+
+const collectionLabel: Record<string, string> = {
+  "sol-da-manha": "Sol da Manhã",
+};
+
+const categoryLabel: Record<string, string> = {
+  caixa: "Caixas",
+  vaso: "Vasos & Objetos",
+  quadro: "Quadros",
+  objeto: "Objetos",
+};
 
 const Product = () => {
   const { slug = "" } = useParams();
@@ -25,11 +36,7 @@ const Product = () => {
   }, [slug, product]);
 
   if (!product) return <Navigate to="/" replace />;
-
-  // Caso especial: as caixas redirecionam pra LP real
-  if (product.redirectTo) {
-    return <Navigate to={product.redirectTo} replace />;
-  }
+  if (product.redirectTo) return <Navigate to={product.redirectTo} replace />;
 
   const selectedVariant =
     product.variants?.find((v) => v.id === variantId) ?? product.variants?.[0];
@@ -38,9 +45,6 @@ const Product = () => {
   const total = unitPrice * qty;
   const compareTotal = unitCompare * qty;
   const pixPrice = total * 0.95;
-  const discountPct = unitCompare > unitPrice
-    ? Math.round(((unitCompare - unitPrice) / unitCompare) * 100)
-    : 0;
 
   const related = getProductsByCollection(product.collection)
     .filter((p) => p.slug !== product.slug)
@@ -57,38 +61,45 @@ const Product = () => {
       <MarqueeBar />
       <SiteHeader />
 
-      {/* Breadcrumb */}
-      <div className="max-w-7xl mx-auto px-5 md:px-8 pt-6">
-        <Link
-          to="/colecao/sol-da-manha"
-          className="inline-flex items-center gap-2 text-[0.65rem] uppercase tracking-[0.3em] text-ink/60 hover:text-terracotta transition-colors"
-        >
-          <ArrowLeft className="w-3 h-3" /> Coleção Sol da Manhã
-        </Link>
-      </div>
+      <section className="py-8 md:py-14 px-4 md:px-12">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
+          {/* Thumbnails */}
+          <div className="hidden lg:flex lg:col-span-1 flex-col gap-4">
+            {product.images.map((src, i) => (
+              <button
+                key={i}
+                onClick={() => setActiveImg(i)}
+                className={cn(
+                  "aspect-[3/4] w-full bg-secondary border overflow-hidden transition-colors",
+                  activeImg === i
+                    ? "border-terracotta"
+                    : "border-transparent hover:border-terracotta/60 opacity-70 hover:opacity-100",
+                )}
+              >
+                <img src={src} alt="" className="w-full h-full object-cover" loading="lazy" />
+              </button>
+            ))}
+          </div>
 
-      {/* PDP */}
-      <section className="py-8 md:py-14 px-5 md:px-8">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 lg:gap-16">
-          <div>
-            <div className="bg-secondary aspect-square overflow-hidden">
+          {/* Main image */}
+          <div className="lg:col-span-6">
+            <div className="aspect-[4/5] w-full bg-secondary border border-border overflow-hidden group">
               <img
                 src={product.images[activeImg]}
                 alt={product.name}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
             </div>
+            {/* Mobile thumbs */}
             {product.images.length > 1 && (
-              <div className="grid grid-cols-5 gap-2 md:gap-3 mt-3">
+              <div className="lg:hidden grid grid-cols-5 gap-2 mt-3">
                 {product.images.map((src, i) => (
                   <button
                     key={i}
                     onClick={() => setActiveImg(i)}
                     className={cn(
                       "aspect-square overflow-hidden border transition-all",
-                      activeImg === i
-                        ? "border-terracotta"
-                        : "border-transparent opacity-70 hover:opacity-100",
+                      activeImg === i ? "border-terracotta" : "border-transparent opacity-70",
                     )}
                   >
                     <img src={src} alt="" className="w-full h-full object-cover" loading="lazy" />
@@ -98,63 +109,56 @@ const Product = () => {
             )}
           </div>
 
-          <div className="lg:pt-2">
-            <div className="flex items-center gap-2 mb-3 text-[0.65rem] uppercase tracking-[0.3em] text-terracotta font-medium">
-              <span className="inline-block w-6 h-px bg-terracotta" /> {product.tagline}
-            </div>
+          {/* Info column */}
+          <div className="lg:col-span-5 flex flex-col pt-2 lg:pt-0">
+            <nav className="text-[10px] uppercase tracking-[0.25em] text-terracotta font-semibold mb-4">
+              <Link to="/" className="hover:opacity-70">Home</Link>
+              <span className="mx-2 opacity-60">/</span>
+              <Link to={`/colecao/${product.collection}`} className="hover:opacity-70">
+                {collectionLabel[product.collection] ?? "Coleção"}
+              </Link>
+              <span className="mx-2 opacity-60">/</span>
+              <span className="opacity-80">{categoryLabel[product.category]}</span>
+            </nav>
 
-            <h1 className="font-display text-3xl md:text-5xl leading-[1.1] mb-4">
+            <h1 className="font-display text-4xl md:text-5xl font-medium leading-[1.1] mb-4">
               {product.name}
             </h1>
 
-            <p className="text-ink/75 leading-relaxed mb-6 text-[0.95rem]">
-              {product.description}
+            <p className="text-ink/70 leading-relaxed mb-6 text-[0.95rem] font-light">
+              {product.tagline}
             </p>
 
-            {/* Preço */}
-            <div className="mb-6 space-y-2">
+            <div className="flex items-center gap-4 mb-6 flex-wrap">
               {compareTotal > total && (
-                <div className="flex items-center gap-2 text-sm">
-                  <span className="text-muted-foreground/70 uppercase tracking-[0.2em] text-[0.6rem]">De</span>
-                  <span className="text-muted-foreground line-through">{formatBRL(compareTotal)}</span>
-                </div>
-              )}
-              <div className="flex items-baseline gap-3 flex-wrap">
-                <span className="text-muted-foreground uppercase tracking-[0.2em] text-[0.6rem] self-center">Por</span>
-                <span className="font-display text-5xl md:text-6xl text-terracotta leading-none">
-                  {formatBRL(total)}
+                <span className="text-sm text-ink/30 line-through font-light tabular-nums">
+                  {formatBRL(compareTotal)}
                 </span>
-                {discountPct > 0 && (
-                  <span className="bg-terracotta text-cream text-[0.6rem] uppercase tracking-[0.2em] px-2 py-1 font-medium">
-                    -{discountPct}% Promoção de Lançamento
-                  </span>
-                )}
-              </div>
-              <div className="flex items-center gap-2 pt-1">
-                <div className="inline-flex items-center gap-2 bg-terracotta/10 border border-terracotta/30 text-terracotta px-2.5 py-1 rounded-sm">
-                  <span className="text-[0.6rem] uppercase tracking-[0.2em] font-semibold">No PIX</span>
-                  <span className="text-base font-medium tabular-nums">{formatBRL(pixPrice)}</span>
-                  <span className="text-[0.6rem] uppercase tracking-[0.2em] font-semibold opacity-80">-5% extra</span>
-                </div>
-              </div>
+              )}
+              <span className="text-2xl font-light tabular-nums">{formatBRL(total)}</span>
+              <span className="text-[0.65rem] text-terracotta font-semibold tracking-wide bg-cream px-2 py-1 border border-terracotta uppercase">
+                {formatBRL(pixPrice)} no PIX · 5% OFF
+              </span>
             </div>
 
-            {/* Variações */}
+            <div className="w-full h-px bg-border mb-8" />
+
+            {/* Variants */}
             {product.variants && product.variants.length > 0 && (
-              <div className="mb-6">
-                <span className="text-[0.7rem] uppercase tracking-[0.25em] text-ink/70 font-medium mb-3 block">
-                  Opção: <span className="text-ink">{selectedVariant?.label}</span>
+              <div className="mb-8">
+                <span className="text-[11px] uppercase tracking-widest block mb-4 font-semibold text-ink/60">
+                  {product.category === "caixa" ? "Tamanho" : "Acabamento"}
                 </span>
-                <div className="grid grid-cols-2 gap-2">
+                <div className="flex flex-wrap gap-3">
                   {product.variants.map((v) => (
                     <button
                       key={v.id}
                       onClick={() => setVariantId(v.id)}
                       className={cn(
-                        "border px-4 py-3 text-sm transition-all",
+                        "px-6 py-2 border text-[13px] transition-all",
                         v.id === variantId
-                          ? "border-terracotta bg-terracotta/5 text-terracotta"
-                          : "border-border hover:border-ink/40",
+                          ? "border-ink bg-ink text-cream"
+                          : "border-border text-ink hover:border-ink",
                       )}
                     >
                       {v.label}
@@ -164,79 +168,88 @@ const Product = () => {
               </div>
             )}
 
-            {/* Quantidade */}
-            <div className="mb-6">
-              <span className="text-[0.7rem] uppercase tracking-[0.25em] text-ink/70 font-medium mb-3 block">
-                Quantidade
-              </span>
-              <div className="inline-flex items-center border border-border">
+            {/* Purchase */}
+            <div className="flex flex-col gap-4 mb-8">
+              <div className="flex items-center gap-4">
+                <div className="flex items-center border border-border bg-white/50">
+                  <button
+                    onClick={() => setQty((q) => Math.max(1, q - 1))}
+                    className="w-12 h-12 flex items-center justify-center hover:bg-cream transition-colors"
+                    aria-label="Diminuir"
+                  >
+                    <Minus className="w-4 h-4" />
+                  </button>
+                  <span className="w-12 h-12 flex items-center justify-center text-sm font-semibold tabular-nums">
+                    {qty}
+                  </span>
+                  <button
+                    onClick={() => setQty((q) => q + 1)}
+                    className="w-12 h-12 flex items-center justify-center hover:bg-cream transition-colors"
+                    aria-label="Aumentar"
+                  >
+                    <Plus className="w-4 h-4" />
+                  </button>
+                </div>
                 <button
-                  onClick={() => setQty((q) => Math.max(1, q - 1))}
-                  className="p-3 hover:bg-secondary transition-colors"
-                  aria-label="Diminuir"
+                  onClick={handleBuy}
+                  className="flex-1 h-12 bg-terracotta text-cream text-[13px] uppercase tracking-[0.2em] font-semibold hover:brightness-110 transition-all"
                 >
-                  <Minus className="w-4 h-4" />
-                </button>
-                <span className="px-5 text-base font-medium tabular-nums">{qty}</span>
-                <button
-                  onClick={() => setQty((q) => q + 1)}
-                  className="p-3 hover:bg-secondary transition-colors"
-                  aria-label="Aumentar"
-                >
-                  <Plus className="w-4 h-4" />
+                  Adicionar à Sacola
                 </button>
               </div>
-            </div>
-
-            {/* CTAs */}
-            <div className="space-y-3 mb-8">
               <button
                 onClick={handleBuy}
-                className="w-full bg-ink text-cream py-4 text-sm uppercase tracking-[0.3em] font-medium hover:bg-terracotta transition-colors"
+                className="w-full h-12 border border-ink text-ink text-[13px] uppercase tracking-[0.2em] font-semibold hover:bg-ink hover:text-cream transition-all"
               >
-                Comprar agora
-              </button>
-              <button
-                onClick={handleBuy}
-                className="w-full border border-ink text-ink py-4 text-sm uppercase tracking-[0.3em] font-medium hover:bg-ink hover:text-cream transition-colors"
-              >
-                Adicionar ao carrinho
+                Comprar Agora
               </button>
             </div>
 
             {/* Trust strip */}
-            <div className="grid grid-cols-3 gap-3 py-5 border-y border-border text-center">
-              <div className="flex flex-col items-center gap-1.5">
-                <Truck className="w-4 h-4 text-terracotta" />
-                <p className="text-[0.6rem] uppercase tracking-[0.2em] text-ink/70">Frete grátis</p>
+            <div className="grid grid-cols-2 gap-4 mb-10 py-4 border-y border-border/60">
+              <div className="flex items-center gap-3">
+                <ShieldCheck className="w-5 h-5 text-terracotta" strokeWidth={1} />
+                <span className="text-[11px] uppercase tracking-wider font-medium">Entrega Segura</span>
               </div>
-              <div className="flex flex-col items-center gap-1.5">
-                <RotateCcw className="w-4 h-4 text-terracotta" />
-                <p className="text-[0.6rem] uppercase tracking-[0.2em] text-ink/70">7 dias troca</p>
-              </div>
-              <div className="flex flex-col items-center gap-1.5">
-                <Lock className="w-4 h-4 text-terracotta" />
-                <p className="text-[0.6rem] uppercase tracking-[0.2em] text-ink/70">Compra segura</p>
+              <div className="flex items-center gap-3">
+                <RotateCcw className="w-5 h-5 text-terracotta" strokeWidth={1} />
+                <span className="text-[11px] uppercase tracking-wider font-medium">Troca 7 dias</span>
               </div>
             </div>
 
-            {/* Highlights */}
-            <div className="mt-8">
-              <p className="eyebrow mb-4">Detalhes</p>
-              <ul className="space-y-3">
-                {product.highlights.map((h) => (
-                  <li key={h} className="flex items-start gap-3 text-sm text-ink/80">
-                    <Check className="w-4 h-4 text-terracotta mt-0.5 flex-shrink-0" />
-                    <span>{h}</span>
-                  </li>
-                ))}
-              </ul>
+            {/* Accordion */}
+            <div>
+              <details className="group border-b border-border py-4" open>
+                <summary className="flex items-center justify-between cursor-pointer list-none">
+                  <span className="text-[13px] uppercase tracking-widest font-semibold">Detalhes do Produto</span>
+                  <ChevronDown className="w-4 h-4 group-open:rotate-180 transition-transform duration-300 text-ink/60" />
+                </summary>
+                <div className="pt-4 text-[14px] leading-relaxed text-ink/70 font-light">
+                  <p className="mb-3">{product.description}</p>
+                  {product.highlights.length > 0 && (
+                    <ul className="list-disc pl-4 space-y-1 opacity-80">
+                      {product.highlights.map((h) => (
+                        <li key={h}>{h}</li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              </details>
+
+              <details className="group border-b border-border py-4">
+                <summary className="flex items-center justify-between cursor-pointer list-none">
+                  <span className="text-[13px] uppercase tracking-widest font-semibold">Envio e Devolução</span>
+                  <ChevronDown className="w-4 h-4 group-open:rotate-180 transition-transform duration-300 text-ink/60" />
+                </summary>
+                <div className="pt-4 text-[14px] leading-relaxed text-ink/70 font-light">
+                  Frete calculado no checkout. Enviamos com embalagem protetora para todo o Brasil. Trocas em até 7 dias após o recebimento.
+                </div>
+              </details>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Outras peças da coleção */}
       {related.length > 0 && (
         <section className="py-16 md:py-24 px-5 md:px-8 bg-secondary/40">
           <div className="max-w-7xl mx-auto">
