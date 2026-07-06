@@ -208,7 +208,7 @@ const Quadro = () => {
         </div>
 
         {/* Pagamento & Garantia */}
-        <div className="max-w-4xl mx-auto mt-10 grid md:grid-cols-2 gap-4 md:gap-5">
+        <div className="lg:hidden max-w-4xl mx-auto mt-10 grid md:grid-cols-2 gap-4 md:gap-5">
           <div className="border border-border p-5 flex flex-col">
             <p className="text-[0.65rem] uppercase tracking-[0.25em] text-ink/55 mb-3">
               Formas de pagamento
