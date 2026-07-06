@@ -35,6 +35,8 @@ import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { LeadBanner } from "@/components/LeadBanner";
 import { StickyBuyBar } from "@/components/StickyBuyBar";
 import { PaymentBadges } from "@/components/PaymentBadges";
+import { ProductCard } from "@/components/ProductCard";
+import { getProductsByCollection } from "@/data/products";
 import { toast } from "sonner";
 
 const PRODUCT_HANDLE = "caixa-decorativa-terracota-e-dourado-de-luxo";
@@ -554,6 +556,108 @@ const Index = () => {
         </div>
       </section>
 
+
+      {/* Detalhes do produto — 60% texto / 40% foto */}
+      <section className="bg-cream py-20 md:py-28 px-5 md:px-8">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-5 gap-12 md:gap-16 items-center">
+          <div className="md:col-span-3 order-2 md:order-1">
+            <span className="eyebrow mb-4 block">Ficha técnica</span>
+            <h2 className="font-display text-3xl md:text-5xl mb-8 leading-tight">
+              Detalhes do produto
+            </h2>
+            <div className="space-y-3 text-[0.95rem] text-ink/85 mb-10">
+              <p><span className="font-semibold text-ink">Cor:</span> Terracota & Dourado</p>
+              <p><span className="font-semibold text-ink">Material:</span> MDF com revestimento PU</p>
+              <p><span className="font-semibold text-ink">Forro interno:</span> Tecido encorpado</p>
+              <p><span className="font-semibold text-ink">Dimensões (Médio):</span> 7,5 × 26,5 × 13,5 cm (A×L×P)</p>
+              <p><span className="font-semibold text-ink">Dimensões (Grande):</span> 7,5 × 36,5 × 18,5 cm (A×L×P)</p>
+              <p><span className="font-semibold text-ink">Acabamento:</span> Fosco com detalhe em folha dourada</p>
+            </div>
+            <h3 className="font-display text-xl md:text-2xl text-terracotta mb-3">
+              Descrição adicional
+            </h3>
+            <p className="text-ink/75 leading-relaxed text-[0.95rem]">
+              Peças pensadas com olhar de arquiteta — feitas para organizar, compor e permanecer.
+              O acabamento em terracota fosco com detalhe em folha dourada traz calor e sofisticação
+              a qualquer ambiente, do console da sala ao criado-mudo do quarto.
+            </p>
+          </div>
+          <div className="md:col-span-2 order-1 md:order-2">
+            <div className="aspect-[4/5] overflow-hidden bg-secondary">
+              <img
+                src={images[1]?.url ?? hero2}
+                alt="Caixa decorativa terracota e dourado — detalhes"
+                loading="lazy"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Cuidados — 60% foto / 40% texto */}
+      <section className="bg-secondary py-20 md:py-28 px-5 md:px-8">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-5 gap-12 md:gap-16 items-center">
+          <div className="md:col-span-3">
+            <div className="aspect-[4/5] overflow-hidden bg-cream">
+              <img
+                src={images[2]?.url ?? hero3}
+                alt="Caixa decorativa em uso na composição"
+                loading="lazy"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+          <div className="md:col-span-2">
+            <span className="eyebrow mb-4 block">Como cuidar</span>
+            <h2 className="font-display text-3xl md:text-5xl mb-8 leading-tight">
+              Cuidados com o produto
+            </h2>
+            <p className="text-ink/75 leading-relaxed text-[0.95rem] mb-8">
+              Limpar apenas com pano seco ou levemente umedecido. Evitar contato prolongado
+              com água, produtos químicos e exposição direta ao sol. Não usar esponjas
+              abrasivas ou álcool sobre o acabamento dourado.
+            </p>
+
+            <h3 className="font-display text-xl md:text-2xl text-terracotta mb-3">
+              Recomendações de uso
+            </h3>
+            <p className="text-ink/75 leading-relaxed text-[0.95rem] mb-8">
+              Ideal para console, aparador, mesa de centro, estante e criado-mudo. Combine
+              com livros, bandejas e objetos decorativos para arranjos equilibrados.
+            </p>
+
+            <h3 className="font-display text-xl md:text-2xl text-terracotta mb-3">
+              Encante-se
+            </h3>
+            <p className="text-ink/75 leading-relaxed text-[0.95rem]">
+              Com acabamento em terracota fosco e detalhes em folha dourada aplicados à mão,
+              a coleção Sol da Manhã traz calor, presença e identidade à sua casa.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Coleção — mais peças */}
+      <section className="bg-cream py-20 md:py-28 px-5 md:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12 md:mb-14">
+            <span className="eyebrow mb-3 block">Coleção Sol da Manhã</span>
+            <h2 className="font-display text-3xl md:text-5xl">Peças que combinam</h2>
+            <p className="text-muted-foreground mt-4 max-w-xl mx-auto">
+              Outras peças da mesma coleção, pensadas para conversar entre si.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-5 gap-y-10 md:gap-x-8">
+            {getProductsByCollection("sol-da-manha")
+              .filter((p) => !p.redirectTo)
+              .slice(0, 4)
+              .map((p) => (
+                <ProductCard key={p.slug} product={p} />
+              ))}
+          </div>
+        </div>
+      </section>
 
       {/* Detalhes */}
       <section className="bg-secondary py-20 md:py-28 px-5 md:px-8">
