@@ -23,9 +23,11 @@ const Quadro = () => {
   const [qty, setQty] = useState(1);
   const [activeImg, setActiveImg] = useState(0);
 
-  // Preço único — sem promoção, sem De/Por, sem PIX extra.
+  // Sem desconto de lançamento — mas mantém 5% extra no PIX
+  const PIX_OFF = 0.05;
   const unit = product.price;
   const total = unit * qty;
+  const pixPrice = total * (1 - PIX_OFF);
 
   const gallery = [product.images[0], hero2, hero3].filter(Boolean) as string[];
 
