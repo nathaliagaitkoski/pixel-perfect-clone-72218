@@ -557,10 +557,10 @@ const Index = () => {
       </section>
 
 
-      {/* Detalhes do produto — 60% texto / 40% foto */}
-      <section className="bg-cream py-20 md:py-28 px-5 md:px-8">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-5 gap-12 md:gap-16 items-center">
-          <div className="md:col-span-3 order-2 md:order-1">
+      {/* Detalhes do produto — 60% texto / 40% foto (full-bleed) */}
+      <section className="bg-cream">
+        <div className="grid md:grid-cols-5 items-stretch">
+          <div className="md:col-span-3 order-2 md:order-1 px-5 md:px-16 lg:px-24 py-16 md:py-24 flex flex-col justify-center">
             <span className="eyebrow mb-4 block">Ficha técnica</span>
             <h2 className="font-display text-3xl md:text-5xl mb-8 leading-tight">
               Detalhes do produto
@@ -582,33 +582,29 @@ const Index = () => {
               a qualquer ambiente, do console da sala ao criado-mudo do quarto.
             </p>
           </div>
-          <div className="md:col-span-2 order-1 md:order-2">
-            <div className="aspect-[4/5] overflow-hidden bg-secondary">
-              <img
-                src={images[1]?.url ?? hero2}
-                alt="Caixa decorativa terracota e dourado — detalhes"
-                loading="lazy"
-                className="w-full h-full object-cover"
-              />
-            </div>
+          <div className="md:col-span-2 order-1 md:order-2 bg-secondary">
+            <img
+              src={images[1]?.url ?? hero2}
+              alt="Caixa decorativa terracota e dourado — detalhes"
+              loading="lazy"
+              className="w-full h-full object-cover min-h-[60vh] md:min-h-full"
+            />
           </div>
         </div>
       </section>
 
-      {/* Cuidados — 60% foto / 40% texto */}
-      <section className="bg-secondary py-20 md:py-28 px-5 md:px-8">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-5 gap-12 md:gap-16 items-center">
-          <div className="md:col-span-3">
-            <div className="aspect-[4/5] overflow-hidden bg-cream">
-              <img
-                src={images[2]?.url ?? hero3}
-                alt="Caixa decorativa em uso na composição"
-                loading="lazy"
-                className="w-full h-full object-cover"
-              />
-            </div>
+      {/* Cuidados — 60% foto / 40% texto (full-bleed) */}
+      <section className="bg-secondary">
+        <div className="grid md:grid-cols-5 items-stretch">
+          <div className="md:col-span-3 bg-cream">
+            <img
+              src={images[2]?.url ?? hero3}
+              alt="Caixa decorativa em uso na composição"
+              loading="lazy"
+              className="w-full h-full object-cover min-h-[60vh] md:min-h-full"
+            />
           </div>
-          <div className="md:col-span-2">
+          <div className="md:col-span-2 px-5 md:px-16 lg:px-20 py-16 md:py-24 flex flex-col justify-center">
             <span className="eyebrow mb-4 block">Como cuidar</span>
             <h2 className="font-display text-3xl md:text-5xl mb-8 leading-tight">
               Cuidados com o produto
@@ -638,6 +634,7 @@ const Index = () => {
         </div>
       </section>
 
+
       {/* Coleção — mais peças */}
       <section className="bg-cream py-20 md:py-28 px-5 md:px-8">
         <div className="max-w-7xl mx-auto">
@@ -659,38 +656,8 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Detalhes */}
-      <section className="bg-secondary py-20 md:py-28 px-5 md:px-8">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-center">
-          <img
-            src={images[0]?.url ?? productOpen}
-            alt="Caixa decorativa com tampa aberta"
-            loading="lazy"
-            className="w-full aspect-square object-cover"
-          />
-          <div>
-            <span className="eyebrow mb-3 block">Por dentro do produto</span>
-            <h2 className="font-display text-3xl md:text-5xl mb-6 leading-tight">
-              No detalhe,
-              <span className="italic"> a diferença.</span>
-            </h2>
-            <dl className="divide-y divide-border border-y border-border">
-              {[
-                ["Material", "MDF + revestimento PU"],
-                ["Forro interno", "Tecido encorpado"],
-                ["Médio", "7,5 × 26,5 × 13,5 cm (A×L×P)"],
-                ["Grande", "7,5 × 36,5 × 18,5 cm (A×L×P)"],
-                ["Cor", "Terracota & dourado"],
-              ].map(([k, v]) => (
-                <div key={k} className="flex justify-between py-3.5 text-sm">
-                  <dt className="text-[0.7rem] uppercase tracking-[0.25em] text-ink/60">{k}</dt>
-                  <dd className="text-ink/85 text-right">{v}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-        </div>
-      </section>
+
+
 
 
       {/* CTA final */}
