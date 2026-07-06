@@ -90,15 +90,23 @@ const Quadro = () => {
               {product.description}
             </p>
 
-            {/* Preço único — sem desconto */}
-            <div className="mb-6">
+            {/* Preço — sem desconto de lançamento, com PIX extra */}
+            <div className="mb-6 space-y-2">
               <div className="flex items-baseline gap-3 flex-wrap">
+                <span className="text-muted-foreground uppercase tracking-[0.2em] text-[0.6rem] self-center">Por</span>
                 <span className="font-display text-5xl md:text-6xl text-terracotta leading-none tabular-nums">
                   {formatBRL(total)}
                 </span>
               </div>
-              <p className="text-[0.75rem] text-ink/60 mt-2">
-                Ou em até 12× no cartão · pagamento no PIX, boleto e cartão.
+              <div className="flex items-center gap-2 pt-1">
+                <div className="inline-flex items-center gap-2 bg-terracotta/10 border border-terracotta/30 text-terracotta px-2.5 py-1 rounded-sm">
+                  <span className="text-[0.6rem] uppercase tracking-[0.2em] font-semibold">No PIX</span>
+                  <span className="text-base font-medium tabular-nums">{formatBRL(pixPrice)}</span>
+                  <span className="text-[0.6rem] uppercase tracking-[0.2em] font-semibold opacity-80">-5% extra</span>
+                </div>
+              </div>
+              <p className="text-[0.7rem] text-ink/55 leading-relaxed">
+                Pagando no PIX você ganha 5% de desconto à vista · Ou em até 12× no cartão.
               </p>
             </div>
 
