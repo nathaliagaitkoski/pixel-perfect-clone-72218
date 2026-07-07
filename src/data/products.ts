@@ -2,8 +2,7 @@ import hero1 from "@/assets/hero-1.png";
 import hero2 from "@/assets/hero-2.png";
 import hero3 from "@/assets/hero-3.png";
 import hero4 from "@/assets/hero-4.png";
-import vasoAlto from "@/assets/mock-vaso-alto.jpg";
-import vasoBaixo from "@/assets/mock-vaso-baixo.jpg";
+import vasoVidro from "@/assets/vaso-vidro-sol-da-manha.jpg";
 import quadro from "@/assets/mock-quadro.jpg";
 import objeto from "@/assets/mock-objeto.jpg";
 
