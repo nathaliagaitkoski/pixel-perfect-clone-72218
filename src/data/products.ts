@@ -4,7 +4,8 @@ import hero3 from "@/assets/hero-3.png";
 import hero4 from "@/assets/hero-4.png";
 import vasoVidro from "@/assets/vaso-vidro-sol-da-manha.jpg";
 import quadro from "@/assets/mock-quadro.jpg";
-import objeto from "@/assets/mock-objeto.jpg";
+import lupaAsset from "@/assets/lupa-polirresina.jpg.asset.json";
+const lupa = lupaAsset.url;
 
 export type ProductCategory = "caixa" | "vaso" | "quadro" | "objeto";
 
