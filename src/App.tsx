@@ -9,6 +9,7 @@ import Home from "./pages/Home.tsx";
 import Collection from "./pages/Collection.tsx";
 import Product from "./pages/Product.tsx";
 import Quadro from "./pages/Quadro.tsx";
+import Vaso from "./pages/Vaso.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.tsx";
 import TermsOfService from "./pages/TermsOfService.tsx";
