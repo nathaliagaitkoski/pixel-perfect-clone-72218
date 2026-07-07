@@ -10,6 +10,7 @@ import Collection from "./pages/Collection.tsx";
 import Product from "./pages/Product.tsx";
 import Quadro from "./pages/Quadro.tsx";
 import Vaso from "./pages/Vaso.tsx";
+import Lupa from "./pages/Lupa.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.tsx";
 import TermsOfService from "./pages/TermsOfService.tsx";
@@ -33,6 +34,7 @@ const AppShell = () => {
       <Route path="/produto/quadro-sol-da-manha" element={<Quadro />} />
       <Route path="/produto/vaso-medio-sol-da-manha" element={<Vaso slug="vaso-medio-sol-da-manha" />} />
       <Route path="/produto/vaso-baixo-sol-da-manha" element={<Vaso slug="vaso-baixo-sol-da-manha" />} />
+      <Route path="/produto/lupa-polirresina-sol-da-manha" element={<Lupa slug="lupa-polirresina-sol-da-manha" />} />
       <Route path="/produto/:slug" element={<Product />} />
       <Route path="/politica-de-privacidade" element={<PrivacyPolicy />} />
       <Route path="/termos-de-servico" element={<TermsOfService />} />
