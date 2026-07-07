@@ -4,7 +4,8 @@ import hero3 from "@/assets/hero-3.png";
 import hero4 from "@/assets/hero-4.png";
 import vasoVidro from "@/assets/vaso-vidro-sol-da-manha.jpg";
 import quadro from "@/assets/mock-quadro.jpg";
-import objeto from "@/assets/mock-objeto.jpg";
+import lupaAsset from "@/assets/lupa-polirresina.jpg.asset.json";
+const lupa = lupaAsset.url;
 
 export type ProductCategory = "caixa" | "vaso" | "quadro" | "objeto";
 
@@ -122,24 +123,26 @@ export const PRODUCTS: MockProduct[] = [
     ],
   },
   {
-    slug: "objeto-decorativo-sol-da-manha",
-    name: "Objeto Decorativo Sol da Manhã",
-    shortName: "Objeto Decorativo",
+    slug: "lupa-polirresina-sol-da-manha",
+    name: "Lupa Decorativa em Polirresina — Base Madeira",
+    shortName: "Lupa Decorativa",
     category: "objeto",
     collection: "sol-da-manha",
     price: 139,
     compareAt: 179,
-    images: [objeto],
-    tagline: "Forma orgânica, peso na composição",
+    images: [lupa],
+    tagline: "Adorno de mesa com aro dourado e base em madeira",
     description:
-      "Escultura decorativa em cerâmica terracota com acentos em folha dourada. Funciona como ponto de luz em prateleiras e mesas.",
+      "Lupa decorativa com aro finalizado em dourado e cabo em madeira natural. Uma peça de mesa que remete a bibliotecas e ateliers — apoia sobre livros, consoles e escrivaninhas com presença discreta.",
     highlights: [
-      "Escultura em cerâmica maciça",
-      "Acentos em folha dourada feitos à mão",
-      "Apoio em feltro para proteger superfícies",
+      "Aro em polirresina com acabamento dourado",
+      "Cabo em madeira natural",
+      "Dimensões: 16,5 × 7,5 × 1,5 cm (A × L × P)",
+      "Ideal como adorno para consoles, escrivaninhas e estantes",
     ],
   },
 ];
+
 
 export const getProductBySlug = (slug: string) =>
   PRODUCTS.find((p) => p.slug === slug);
