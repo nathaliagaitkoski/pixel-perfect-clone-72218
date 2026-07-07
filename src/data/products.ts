@@ -124,19 +124,19 @@ export const PRODUCTS: MockProduct[] = [
   },
   {
     slug: "lupa-polirresina-sol-da-manha",
-    name: "Lupa Decorativa em Polirresina — Base Madeira",
+    name: "Lupa Decorativa em Polirresina — Base Polirresina",
     shortName: "Lupa Decorativa",
     category: "objeto",
     collection: "sol-da-manha",
     price: 139,
     compareAt: 179,
     images: [lupa],
-    tagline: "Adorno de mesa com aro dourado e base em madeira",
+    tagline: "Adorno de mesa com aro dourado e base em polirresina",
     description:
-      "Lupa decorativa com aro finalizado em dourado e cabo em madeira natural. Uma peça de mesa que remete a bibliotecas e ateliers — apoia sobre livros, consoles e escrivaninhas com presença discreta.",
+      "Lupa decorativa com aro finalizado em dourado e cabo em polirresina. Uma peça de mesa que remete a bibliotecas e ateliers — apoia sobre livros, consoles e escrivaninhas com presença discreta.",
     highlights: [
       "Aro em polirresina com acabamento dourado",
-      "Cabo em madeira natural",
+      "Cabo em polirresina",
       "Dimensões: 16,5 × 7,5 × 1,5 cm (A × L × P)",
       "Ideal como adorno para consoles, escrivaninhas e estantes",
     ],
