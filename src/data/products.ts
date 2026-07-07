@@ -141,6 +141,8 @@ export const PRODUCTS: MockProduct[] = [
       "Ideal como adorno para consoles, escrivaninhas e estantes",
     ],
   },
+];
+
 
 export const getProductBySlug = (slug: string) =>
   PRODUCTS.find((p) => p.slug === slug);
