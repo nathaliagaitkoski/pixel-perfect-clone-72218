@@ -95,7 +95,7 @@ var MCP_PRODUCTS = [
   },
   {
     slug: "lupa-polirresina-sol-da-manha",
-    name: "Lupa Decorativa em Polirresina \u2014 Base Polirresina",
+    name: "Lupa Decorativa em Polirresina Dourada",
     shortName: "Lupa Decorativa",
     category: "objeto",
     collection: "sol-da-manha",

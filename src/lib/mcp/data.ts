@@ -105,7 +105,7 @@ export const MCP_PRODUCTS: McpProduct[] = [
   },
   {
     slug: "lupa-polirresina-sol-da-manha",
-    name: "Lupa Decorativa em Polirresina — Base Polirresina",
+    name: "Lupa Decorativa em Polirresina Dourada",
     shortName: "Lupa Decorativa",
     category: "objeto",
     collection: "sol-da-manha",
