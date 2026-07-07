@@ -44,35 +44,37 @@ var MCP_PRODUCTS = [
     ]
   },
   {
-    slug: "vaso-alto-sol-da-manha",
-    name: "Vaso Alto Sol da Manh\xE3",
-    shortName: "Vaso Alto",
+    slug: "vaso-medio-sol-da-manha",
+    name: "Vaso M\xE9dio em Vidro \u2014 Fio Dourado",
+    shortName: "Vaso M\xE9dio",
     category: "vaso",
     collection: "sol-da-manha",
     price: 179,
     compareAt: 219,
-    tagline: "Silhueta esguia, presen\xE7a discreta",
-    description: "Cer\xE2mica artesanal em terracota fosco com detalhe em folha dourada feito \xE0 m\xE3o. Cada pe\xE7a \xE9 \xFAnica.",
+    tagline: "Silhueta oval em vidro cristal com borda em fio dourado",
+    description: "Vaso em vidro soprado transparente (21 \xD7 17 \xD7 17 cm) com borda finalizada em fio dourado aplicado \xE0 m\xE3o. Pe\xE7a artesanal \u2014 pequenas varia\xE7\xF5es fazem parte do charme.",
     highlights: [
-      "Cer\xE2mica artesanal \u2014 pe\xE7a \xFAnica",
-      "Folha dourada aplicada \xE0 m\xE3o",
-      "Ideal para galhos secos ou flores cortadas"
+      "Vidro soprado transparente \u2014 pe\xE7a \xFAnica",
+      "Borda em fio dourado aplicado \xE0 m\xE3o",
+      "21 \xD7 17 \xD7 17 cm (A \xD7 L \xD7 \xD8)",
+      "Ideal para galhos secos, pampas e flores de haste longa"
     ]
   },
   {
     slug: "vaso-baixo-sol-da-manha",
-    name: "Vaso Baixo Sol da Manh\xE3",
+    name: "Vaso Baixo em Vidro \u2014 Fio Dourado",
     shortName: "Vaso Baixo",
     category: "vaso",
     collection: "sol-da-manha",
     price: 149,
     compareAt: 189,
-    tagline: "Volume generoso, gesto contempor\xE2neo",
-    description: "Cer\xE2mica artesanal em terracota fosco com fio dourado contornando a borda.",
+    tagline: "Volume arredondado em vidro cristal com borda em fio dourado",
+    description: "Vaso baixo em vidro soprado transparente (13 \xD7 16,5 \xD7 16,5 cm), com corpo arredondado e borda em fio dourado feito \xE0 m\xE3o. Comp\xF5e dupla com o vaso m\xE9dio.",
     highlights: [
-      "Cer\xE2mica artesanal \u2014 pe\xE7a \xFAnica",
-      "Borda em fio dourado",
-      "Perfeito para pampas e arranjos secos"
+      "Vidro soprado transparente \u2014 pe\xE7a \xFAnica",
+      "Borda em fio dourado aplicado \xE0 m\xE3o",
+      "13 \xD7 16,5 \xD7 16,5 cm (A \xD7 L \xD7 \xD8)",
+      "Perfeito para arranjos baixos ou como objeto solo"
     ]
   },
   {
