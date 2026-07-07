@@ -32,8 +32,9 @@ const SPECS: Record<string, { dimensoes: string; capacidade: string; peso: strin
   },
 };
 
-const Vaso = () => {
-  const { slug = "" } = useParams();
+const Vaso = ({ slug: slugProp }: { slug?: string } = {}) => {
+  const params = useParams();
+  const slug = slugProp ?? params.slug ?? "";
   const product = getProductBySlug(slug);
   const [qty, setQty] = useState(1);
   const [activeImg, setActiveImg] = useState(0);
