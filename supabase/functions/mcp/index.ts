@@ -94,19 +94,20 @@ var MCP_PRODUCTS = [
     ]
   },
   {
-    slug: "objeto-decorativo-sol-da-manha",
-    name: "Objeto Decorativo Sol da Manh\xE3",
-    shortName: "Objeto Decorativo",
+    slug: "lupa-polirresina-sol-da-manha",
+    name: "Lupa Decorativa em Polirresina \u2014 Base Madeira",
+    shortName: "Lupa Decorativa",
     category: "objeto",
     collection: "sol-da-manha",
     price: 139,
     compareAt: 179,
-    tagline: "Forma org\xE2nica, peso na composi\xE7\xE3o",
-    description: "Escultura decorativa em cer\xE2mica terracota com acentos em folha dourada.",
+    tagline: "Adorno de mesa com aro dourado e base em madeira",
+    description: "Lupa decorativa (16,5 \xD7 7,5 \xD7 1,5 cm) com aro em polirresina dourada e cabo em madeira natural. Pe\xE7a de mesa que remete a bibliotecas e ateliers.",
     highlights: [
-      "Escultura em cer\xE2mica maci\xE7a",
-      "Acentos em folha dourada feitos \xE0 m\xE3o",
-      "Apoio em feltro para proteger superf\xEDcies"
+      "Aro em polirresina com acabamento dourado",
+      "Cabo em madeira natural",
+      "16,5 \xD7 7,5 \xD7 1,5 cm (A \xD7 L \xD7 P)",
+      "Ideal para consoles, escrivaninhas e estantes"
     ]
   }
 ];
