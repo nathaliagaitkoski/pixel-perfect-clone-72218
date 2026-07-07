@@ -31,8 +31,8 @@ const AppShell = () => {
       <Route path="/colecao/:slug" element={<Collection />} />
       <Route path="/produto/caixa-decorativa-terracota-e-dourado-de-luxo" element={<Index />} />
       <Route path="/produto/quadro-sol-da-manha" element={<Quadro />} />
-      <Route path="/produto/vaso-medio-sol-da-manha" element={<Vaso />} />
-      <Route path="/produto/vaso-baixo-sol-da-manha" element={<Vaso />} />
+      <Route path="/produto/vaso-medio-sol-da-manha" element={<Vaso slug="vaso-medio-sol-da-manha" />} />
+      <Route path="/produto/vaso-baixo-sol-da-manha" element={<Vaso slug="vaso-baixo-sol-da-manha" />} />
       <Route path="/produto/:slug" element={<Product />} />
       <Route path="/politica-de-privacidade" element={<PrivacyPolicy />} />
       <Route path="/termos-de-servico" element={<TermsOfService />} />
