@@ -32,7 +32,7 @@ export const CountdownBanner = () => {
         <div className="flex items-center gap-2">
           <Zap className="w-3.5 h-3.5" fill="currentColor" />
           <span className="text-[0.65rem] md:text-[0.7rem] uppercase tracking-[0.25em] font-medium">
-            Promoção de Lançamento · 20% OFF + 5% extra no PIX
+            Caixas decorativas · 20% OFF + 5% extra no PIX
           </span>
         </div>
 

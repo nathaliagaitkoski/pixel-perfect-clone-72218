@@ -72,8 +72,7 @@ export const PRODUCTS: MockProduct[] = [
     shortName: "Vaso Médio",
     category: "vaso",
     collection: "sol-da-manha",
-    price: 179,
-    compareAt: 219,
+    price: 219,
     images: [vasoVidro],
     tagline: "Silhueta oval em vidro cristal com borda em fio dourado",
     description:
@@ -91,8 +90,7 @@ export const PRODUCTS: MockProduct[] = [
     shortName: "Vaso Baixo",
     category: "vaso",
     collection: "sol-da-manha",
-    price: 149,
-    compareAt: 189,
+    price: 189,
     images: [vasoVidro],
     tagline: "Volume arredondado em vidro cristal com borda em fio dourado",
     description:
@@ -110,8 +108,7 @@ export const PRODUCTS: MockProduct[] = [
     shortName: "Quadro",
     category: "quadro",
     collection: "sol-da-manha",
-    price: 229,
-    compareAt: 289,
+    price: 289,
     images: [quadro],
     tagline: "Arte abstrata em terracota e dourado",
     description:
@@ -128,8 +125,7 @@ export const PRODUCTS: MockProduct[] = [
     shortName: "Lupa Decorativa",
     category: "objeto",
     collection: "sol-da-manha",
-    price: 139,
-    compareAt: 179,
+    price: 179,
     images: [lupa],
     tagline: "Adorno de mesa com aro dourado e base em polirresina",
     description:

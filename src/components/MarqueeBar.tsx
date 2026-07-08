@@ -2,7 +2,7 @@ const MESSAGES = [
   "Frete grátis para todo o Brasil",
   "Curadoria com olhar de arquiteta",
   "Despacho em até 2 dias úteis",
-  "20% OFF · Promoção de Lançamento + 5% extra no PIX",
+  "Caixas decorativas · 20% OFF + 5% extra no PIX",
   "7 dias para troca",
 ];
 
