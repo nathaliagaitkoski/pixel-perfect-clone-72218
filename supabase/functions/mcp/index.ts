@@ -49,8 +49,7 @@ var MCP_PRODUCTS = [
     shortName: "Vaso M\xE9dio",
     category: "vaso",
     collection: "sol-da-manha",
-    price: 179,
-    compareAt: 219,
+    price: 219,
     tagline: "Silhueta oval em vidro cristal com borda em fio dourado",
     description: "Vaso em vidro soprado transparente (21 \xD7 17 \xD7 17 cm) com borda finalizada em fio dourado aplicado \xE0 m\xE3o. Pe\xE7a artesanal \u2014 pequenas varia\xE7\xF5es fazem parte do charme.",
     highlights: [
@@ -66,8 +65,7 @@ var MCP_PRODUCTS = [
     shortName: "Vaso Baixo",
     category: "vaso",
     collection: "sol-da-manha",
-    price: 149,
-    compareAt: 189,
+    price: 189,
     tagline: "Volume arredondado em vidro cristal com borda em fio dourado",
     description: "Vaso baixo em vidro soprado transparente (13 \xD7 16,5 \xD7 16,5 cm), com corpo arredondado e borda em fio dourado feito \xE0 m\xE3o. Comp\xF5e dupla com o vaso m\xE9dio.",
     highlights: [
@@ -83,8 +81,7 @@ var MCP_PRODUCTS = [
     shortName: "Quadro",
     category: "quadro",
     collection: "sol-da-manha",
-    price: 229,
-    compareAt: 289,
+    price: 289,
     tagline: "Arte abstrata em terracota e dourado",
     description: "Impress\xE3o fine art em papel algod\xE3o 310g, com moldura em carvalho natural e passepartout cru.",
     highlights: [
@@ -99,8 +96,7 @@ var MCP_PRODUCTS = [
     shortName: "Lupa Decorativa",
     category: "objeto",
     collection: "sol-da-manha",
-    price: 139,
-    compareAt: 179,
+    price: 179,
     tagline: "Adorno de mesa com aro dourado e base em polirresina",
     description: "Lupa decorativa (16,5 \xD7 7,5 \xD7 1,5 cm) com aro em polirresina dourada e cabo em polirresina. Pe\xE7a de mesa que remete a bibliotecas e ateliers.",
     highlights: [

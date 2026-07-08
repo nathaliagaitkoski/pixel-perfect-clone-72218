@@ -56,8 +56,7 @@ export const MCP_PRODUCTS: McpProduct[] = [
     shortName: "Vaso Médio",
     category: "vaso",
     collection: "sol-da-manha",
-    price: 179,
-    compareAt: 219,
+    price: 219,
     tagline: "Silhueta oval em vidro cristal com borda em fio dourado",
     description:
       "Vaso em vidro soprado transparente (21 × 17 × 17 cm) com borda finalizada em fio dourado aplicado à mão. Peça artesanal — pequenas variações fazem parte do charme.",
@@ -74,8 +73,7 @@ export const MCP_PRODUCTS: McpProduct[] = [
     shortName: "Vaso Baixo",
     category: "vaso",
     collection: "sol-da-manha",
-    price: 149,
-    compareAt: 189,
+    price: 189,
     tagline: "Volume arredondado em vidro cristal com borda em fio dourado",
     description:
       "Vaso baixo em vidro soprado transparente (13 × 16,5 × 16,5 cm), com corpo arredondado e borda em fio dourado feito à mão. Compõe dupla com o vaso médio.",
@@ -92,8 +90,7 @@ export const MCP_PRODUCTS: McpProduct[] = [
     shortName: "Quadro",
     category: "quadro",
     collection: "sol-da-manha",
-    price: 229,
-    compareAt: 289,
+    price: 289,
     tagline: "Arte abstrata em terracota e dourado",
     description:
       "Impressão fine art em papel algodão 310g, com moldura em carvalho natural e passepartout cru.",
@@ -109,8 +106,7 @@ export const MCP_PRODUCTS: McpProduct[] = [
     shortName: "Lupa Decorativa",
     category: "objeto",
     collection: "sol-da-manha",
-    price: 139,
-    compareAt: 179,
+    price: 179,
     tagline: "Adorno de mesa com aro dourado e base em polirresina",
     description:
       "Lupa decorativa (16,5 × 7,5 × 1,5 cm) com aro em polirresina dourada e cabo em polirresina. Peça de mesa que remete a bibliotecas e ateliers.",
