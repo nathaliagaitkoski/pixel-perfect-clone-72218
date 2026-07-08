@@ -48,7 +48,7 @@ const Vaso = ({ slug: slugProp }: { slug?: string } = {}) => {
     return <Navigate to="/" replace />;
   }
 
-  // Preço com desconto de lançamento (compareAt → price = 20% OFF já aplicado) + 5% no PIX
+  // Preço à vista + 5% no PIX
   const PIX_OFF = 0.05;
   const unit = product.price;
   const compare = product.compareAt ?? 0;
@@ -121,7 +121,7 @@ const Vaso = ({ slug: slugProp }: { slug?: string } = {}) => {
               {product.description}
             </p>
 
-            {/* Preço — com desconto de lançamento (20% OFF) + PIX extra 5% */}
+            {/* Preço — com 5% no PIX */}
             <div className="mb-6 space-y-2">
               <div className="flex items-baseline gap-3 flex-wrap">
                 {compareTotal > total && (
@@ -151,7 +151,7 @@ const Vaso = ({ slug: slugProp }: { slug?: string } = {}) => {
                 </div>
               </div>
               <p className="text-[0.7rem] text-ink/55 leading-relaxed">
-                Promoção de lançamento com 20% OFF · Pagando no PIX você ganha mais 5% à vista.
+                Pagando no PIX você ganha 5% à vista.
               </p>
             </div>
 

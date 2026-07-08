@@ -41,6 +41,7 @@ const Lupa = ({ slug: slugProp }: { slug?: string } = {}) => {
     return <Navigate to="/" replace />;
   }
 
+  // Preço à vista + 5% no PIX
   const PIX_OFF = 0.05;
   const unit = product.price;
   const compare = product.compareAt ?? 0;
@@ -140,7 +141,7 @@ const Lupa = ({ slug: slugProp }: { slug?: string } = {}) => {
                 </div>
               </div>
               <p className="text-[0.7rem] text-ink/55 leading-relaxed">
-                Promoção de lançamento com 20% OFF · Pagando no PIX você ganha mais 5% à vista.
+                Pagando no PIX você ganha 5% à vista.
               </p>
             </div>
 
