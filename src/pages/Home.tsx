@@ -1,10 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import hero1 from "@/assets/hero-1.png";
-import hero2 from "@/assets/hero-2.png";
-import hero3 from "@/assets/hero-3.png";
-import hero4 from "@/assets/hero-4.png";
+import heroColecao1 from "@/assets/hero-colecao-1.png.asset.json";
+import heroColecao2 from "@/assets/hero-colecao-2.png.asset.json";
+import heroColecao3 from "@/assets/hero-colecao-3.png.asset.json";
 import founderImg from "@/assets/founder.png";
 import { cn } from "@/lib/utils";
 import { MarqueeBar } from "@/components/MarqueeBar";
@@ -16,36 +15,21 @@ import { LeadBanner } from "@/components/LeadBanner";
 import { COLLECTIONS } from "@/data/collections";
 import { getProductsByCollection } from "@/data/products";
 
-const HERO_VIDEO = "/video/hero.mp4";
-const HERO_SLIDES = [hero1, hero2, hero3, hero4];
-const HERO_TOTAL = HERO_SLIDES.length + 1;
+const HERO_SLIDES = [heroColecao1.url, heroColecao2.url, heroColecao3.url];
 
 const Home = () => {
   const [heroSlide, setHeroSlide] = useState(0);
-  const heroVideoRef = useRef<HTMLVideoElement | null>(null);
 
   const collection = COLLECTIONS[0];
   const products = getProductsByCollection(collection.slug);
 
   useEffect(() => {
-    if (heroSlide === 0) return;
     const t = setInterval(
-      () => setHeroSlide((s) => (s === 0 ? 0 : ((s - 1 + 1) % HERO_SLIDES.length) + 1)),
+      () => setHeroSlide((s) => (s + 1) % HERO_SLIDES.length),
       5000,
     );
     return () => clearInterval(t);
-  }, [heroSlide]);
-
-  useEffect(() => {
-    const video = heroVideoRef.current;
-    if (!video) return;
-    if (heroSlide === 0) {
-      video.currentTime = 0;
-      video.play().catch(() => {});
-    } else {
-      video.pause();
-    }
-  }, [heroSlide]);
+  }, []);
 
   const scrollToCollection = () =>
     document.getElementById("colecao")?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -55,73 +39,65 @@ const Home = () => {
       <MarqueeBar />
       <SiteHeader />
 
-      {/* HERO cinematográfico */}
+      {/* HERO split 50/50 */}
       <section className="bg-cream">
-        <div className="relative h-[78vh] md:h-[82vh] overflow-hidden bg-ink">
-          <video
-            ref={heroVideoRef}
-            src={HERO_VIDEO}
-            muted
-            playsInline
-            autoPlay
-            loop={false}
-            preload="auto"
-            onEnded={() => setHeroSlide(1)}
-            onLoadedMetadata={() => {
-              const video = heroVideoRef.current;
-              if (video && heroSlide === 0) video.play().catch(() => {});
-            }}
-            className={cn(
-              "absolute inset-0 w-full h-full object-cover transition-opacity duration-700 pointer-events-none",
-              heroSlide === 0 ? "opacity-100 z-10" : "opacity-0 z-0",
-            )}
-          />
-          {HERO_SLIDES.map((src, i) => (
-            <img
-              key={i}
-              src={src}
-              alt=""
-              className={cn(
-                "absolute inset-0 w-full h-full object-cover transition-opacity duration-700",
-                i + 1 === heroSlide ? "opacity-100 z-10" : "opacity-0 z-0",
-              )}
-            />
-          ))}
-          <div className="absolute inset-0 bg-gradient-to-b from-ink/30 via-ink/10 to-ink/70 z-20 pointer-events-none" />
-
-          <div className="absolute inset-0 flex flex-col justify-end items-center text-center px-6 pb-16 md:pb-20 z-30">
-            <span className="text-[0.45rem] md:text-[0.5rem] uppercase tracking-[0.4em] text-cream/90 mb-2">
-              Curadoria de arquiteta
+        <div className="grid md:grid-cols-2 min-h-[80vh] md:min-h-[85vh]">
+          {/* Bloco de texto */}
+          <div className="order-2 md:order-1 flex flex-col justify-center bg-[#5a3524] text-cream px-6 py-14 md:px-16 md:py-20 lg:px-24">
+            <span className="text-[0.6rem] md:text-[0.65rem] uppercase tracking-[0.4em] text-cream/80 mb-5 md:mb-6">
+              Coleção Sol da Manhã
             </span>
-            <h1 className="font-display text-cream text-xl md:text-3xl lg:text-4xl leading-[1.1] max-w-2xl mb-5 md:mb-6">
-              Decoração bonita
-              <br />
-              <span className="italic">não precisa ser intocável.</span>
+            <h1 className="font-display leading-[0.95] mb-6 md:mb-8">
+              <span className="block text-4xl md:text-5xl lg:text-6xl">nova</span>
+              <span className="block italic text-6xl md:text-7xl lg:text-[6.5rem] text-[#e8c9a0]">
+                coleção
+              </span>
             </h1>
+            <p className="text-cream/85 leading-relaxed text-[0.95rem] md:text-base max-w-md mb-8 md:mb-10">
+              Uma composição que reúne madeira natural, couro, vidro e detalhes dourados
+              para criar ambientes acolhedores, sofisticados e atemporais.
+            </p>
             <button
               type="button"
               onClick={scrollToCollection}
-              className="cursor-pointer text-cream text-[0.42rem] md:text-[0.49rem] uppercase tracking-[0.32em] font-medium underline underline-offset-[4px] decoration-1 hover:decoration-2 transition-all pointer-events-auto"
+              className="self-start inline-flex items-center gap-3 bg-cream text-ink px-7 py-3.5 text-[0.7rem] uppercase tracking-[0.3em] font-medium hover:bg-[#e8c9a0] transition-colors"
             >
-              Ver coleção
+              Comprar a coleção <ArrowRight className="w-3.5 h-3.5" />
             </button>
+
+            {/* Dots */}
+            <div className="flex gap-2 mt-10 md:mt-14">
+              {HERO_SLIDES.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setHeroSlide(i)}
+                  aria-label={`Slide ${i + 1}`}
+                  className={cn(
+                    "h-1 transition-all cursor-pointer",
+                    i === heroSlide ? "w-10 bg-cream" : "w-4 bg-cream/30 hover:bg-cream/50",
+                  )}
+                />
+              ))}
+            </div>
           </div>
 
-          <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2 z-40">
-            {Array.from({ length: HERO_TOTAL }).map((_, i) => (
-              <button
+          {/* Bloco de imagem */}
+          <div className="order-1 md:order-2 relative min-h-[55vh] md:min-h-full overflow-hidden bg-ink">
+            {HERO_SLIDES.map((src, i) => (
+              <img
                 key={i}
-                onClick={() => setHeroSlide(i)}
-                aria-label={`Slide ${i + 1}`}
+                src={src}
+                alt=""
                 className={cn(
-                  "h-1.5 transition-all pointer-events-auto cursor-pointer",
-                  i === heroSlide ? "w-8 bg-cream" : "w-3 bg-cream/40 hover:bg-cream/60",
+                  "absolute inset-0 w-full h-full object-cover transition-opacity duration-1000",
+                  i === heroSlide ? "opacity-100" : "opacity-0",
                 )}
               />
             ))}
           </div>
         </div>
       </section>
+
 
       {/* Coleção Sol da Manhã */}
       <section id="colecao" className="py-16 md:py-24 px-5 md:px-8 bg-cream">
